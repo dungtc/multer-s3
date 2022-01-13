@@ -61,7 +61,15 @@ Key | Description | Note
 `storageClass` | The `storageClass` to be used for the uploaded file in S3 | `S3Storage`
 `versionId` | The `versionId` is an optional param returned by S3 for versioned buckets. | `S3Storage`
 `contentEncoding` | The `contentEncoding` used to upload the file | `S3Storage`
-`multipart` | The `multipart` is an optional param | `S3Storage`
+`multipart` | The `multipart` to be used for concurrent handling of parts if the payload is large enough | `S3Storage`
+
+**Multipart Options**
+
+Key | Description | Note
+--- | --- | ---
+`queueSize` | The size of the concurrent queue manager to upload parts in parallel. | Default: 4
+`partSize` | The size in bytes for each individual part to be uploaded. | Default: 5 mb
+
 
 ### Setting ACL
 
