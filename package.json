@@ -1,5 +1,5 @@
 {
-  "name": "multer-s3",
+  "name": "multer-s3-multipart",
   "version": "2.10.0",
   "description": "Streaming multer storage engine for AWS S3",
   "main": "index.js",
