@@ -178,6 +178,11 @@ function S3Storage (opts) {
     case 'undefined': this.getSSEKMS = defaultSSEKMS; break
     default: throw new TypeError('Expected opts.sseKmsKeyId to be undefined, string, or function')
   }
+
+  switch (typeof opts.multipart) {
+    case 'object': this.multipart = opts.multipart; break
+    default: throw new TypeError('Expected opts.multipart to be object')
+  }
 }
 
 S3Storage.prototype._handleFile = function (req, file, cb) {
@@ -207,7 +212,7 @@ S3Storage.prototype._handleFile = function (req, file, cb) {
       params.ContentEncoding = opts.contentEncoding
     }
 
-    var upload = this.s3.upload(params)
+    var upload = this.s3.upload(params, opts.multipart)
 
     upload.on('httpUploadProgress', function (ev) {
       if (ev.total) currentSize = ev.total
