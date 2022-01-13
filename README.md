@@ -1,13 +1,17 @@
-# Multer S3
+# Multer S3 Multipart
 
-Streaming multer storage engine for AWS S3.
+Streaming multer storage engine for AWS S3 and multipart uploading.
+
+Original repository: https://github.com/anacronw/multer-s3.
+
+This is just a folk version with multipart uploading support.
 
 This project is mostly an integration piece for existing code samples from Multer's [storage engine documentation](https://github.com/expressjs/multer/blob/master/StorageEngine.md) with a call to `s3.upload` (see the [aws-sdk docs](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#upload-property)) as the substitution piece for file system.  Existing solutions I found required buffering the multipart uploads into the actual filesystem which is difficult to scale.
 
 ## Installation
 
 ```sh
-npm install --save multer-s3
+npm install --save multer-s3-multipart
 ```
 
 ## Usage
@@ -57,6 +61,7 @@ Key | Description | Note
 `storageClass` | The `storageClass` to be used for the uploaded file in S3 | `S3Storage`
 `versionId` | The `versionId` is an optional param returned by S3 for versioned buckets. | `S3Storage`
 `contentEncoding` | The `contentEncoding` used to upload the file | `S3Storage`
+`multipart` | The `multipart` is an optional param | `S3Storage`
 
 ### Setting ACL
 
